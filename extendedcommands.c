@@ -1099,12 +1099,14 @@ void show_placeholder_menu() {
                     ui_print("We're making the EFS backup for you.\n");
                     __system("dd if=/dev/block/mmcblk0p1 of=/sdcard/efs.img bs=4096");
                     ui_print("Your backup is on /sdcard/efs.img.\n");
+                    break;
                 }
                 case 1:
                 {
                     ensure_path_mounted("/system");
                     remove("/system/etc/init.d/*.*");
                     ui_print("Cleaned init.d folder.\n");
+                    break;
                 }
                 case 2: 
                 {
@@ -1112,6 +1114,7 @@ void show_placeholder_menu() {
                     ensure_path_unmounted("/preload");
                     format_volume("/preload");
                     ui_print("Formatted /preload.\n");
+                    break;
                 }
             }
         }

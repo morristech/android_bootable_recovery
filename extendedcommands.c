@@ -1075,8 +1075,8 @@ void show_advanced_menu()
     }
 }
 
-void show_glitch_menu() {
-        static char* headers[] = { "GLITCH Kernel - Extras Menu",
+void show_placeholder_menu() {
+        static char* headers[] = { "Placeholder Menu",
                                    "",
                                    NULL
         };

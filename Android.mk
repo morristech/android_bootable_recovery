@@ -27,12 +27,7 @@ LOCAL_MODULE := recovery
 
 LOCAL_FORCE_STATIC_EXECUTABLE := true
 
-ifdef I_AM_KOUSH
-RECOVERY_NAME := ClockworkMod Recovery
-LOCAL_CFLAGS += -DI_AM_KOUSH
-else
-RECOVERY_NAME := CWM-based Recovery
-endif
+RECOVERY_NAME := Placeholder recovery
 
 RECOVERY_VERSION := $(RECOVERY_NAME) v5.5.0.4
 

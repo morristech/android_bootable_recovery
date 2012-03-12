@@ -1075,6 +1075,48 @@ void show_advanced_menu()
     }
 }
 
+void show_glitch_menu() {
+        static char* headers[] = { "GLITCH Kernel - Extras Menu",
+                                   "",
+                                   NULL
+        };
+        static char* list[] = { "EFS backup",
+                                "Cleanup init.d",
+                                "Format /preload",
+                                "",
+                                NULL
+        };
+        for (;;)
+        {
+            int chosen_item = get_menu_selection(headers, list, 0, 0);
+            if (chosen_item == GO_BACK)
+                break;
+            switch(chosen_item)
+            {
+                case 0:
+                {
+                    ensure_path_mounted("/sdcard");
+                    ui_print("We're making the EFS backup for you.\n");
+                    __system("dd if=/dev/block/mmcblk0p1 of=/sdcard/efs.img bs=4096");
+                    ui_print("Your backup is on /sdcard/efs.img.\n");
+                }
+                case 1:
+                {
+                    ensure_path_mounted("/system");
+                    remove("/system/etc/init.d/*.*");
+                    ui_print("Cleaned init.d folder.\n");
+                }
+                case 2: 
+                {
+                    ui_print("Formatting /preload.\n");
+                    ensure_path_unmounted("/preload");
+                    format_volume("/preload");
+                    ui_print("Formatted /preload.\n");
+                }
+            }
+        }
+}
+
 void write_fstab_root(char *path, FILE *file)
 {
     Volume *vol = volume_for_path(path);

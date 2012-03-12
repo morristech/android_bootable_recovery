@@ -740,6 +740,10 @@ prompt_and_wait() {
                 show_partition_menu();
                 break;
 
+            case ITEM_PLACEHOLDER:
+                show_advanced_menu();
+                break;
+
             case ITEM_ADVANCED:
                 show_advanced_menu();
                 break;
